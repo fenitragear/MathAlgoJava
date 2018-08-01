@@ -1,3 +1,4 @@
+
 /**
  * @author Stéphan R.
  *
@@ -5,11 +6,16 @@
 public class EulerTotient {
 
 	/**
+	 * <pre>{@code
 	 * gcd(a, b) = phi(a * b) == phi(a) * phi(b)
-	 * Where phi(n) is the Euler's totient function
+	 * 
+	 * Where 
+	 * 	phi(n) is the Euler's totient function
+	 * }</pre>
 	 * 
 	 * @param a
 	 * @param b
+	 * 
 	 * @return
 	 */
 	static long gcd(long a, long b) {

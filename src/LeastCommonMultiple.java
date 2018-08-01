@@ -27,10 +27,11 @@ public final class LeastCommonMultiple {
 	}
 	
 	/**
-	 * Least Common Multiple: ab/gcd(a, b)
+	 * Least Common Multiple: {@code a.b/gcd(a, b)}
 	 * 
 	 * @param a
 	 * @param b
+	 * 
 	 * @return
 	 */
 	static long lcm(long a, long b) {
@@ -38,8 +39,8 @@ public final class LeastCommonMultiple {
 	}
 
 	/**
-	 * LCM on a set of numbers
-	 * 		lcm(a, b, c) = lcm(a, lcm(b, c))
+	 * LCM on a set of numbers <br />
+	 * 		{@code lcm(a, b, c) = lcm(a, lcm(b, c))}
 	 * 
 	 * @param a
 	 * @param b
