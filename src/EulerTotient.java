@@ -36,7 +36,6 @@ public class EulerTotient {
 	 * @return
 	 */
 	static long phi(long n) {
-		// Initialize result as n
         float result = n;
  
         for (long p = 2; p * p <= n; ++p) {
@@ -52,7 +51,7 @@ public class EulerTotient {
         if (n > 1)
             result *= (1.0 - (1.0 / (float) n));
  
-        return (int)result;
+        return (int) result;
 	}
 	
 	/**
