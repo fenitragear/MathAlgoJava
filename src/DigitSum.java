@@ -1,4 +1,3 @@
-import java.math.BigInteger;
 
 /**
  * https://en.wikipedia.org/wiki/Digit_sum

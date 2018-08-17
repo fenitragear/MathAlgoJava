@@ -3,7 +3,7 @@
  * @author Stéphan R.
  *
  */
-public class EulerTotient {
+public class GreatestCommonDivisor {
 
 	/**
 	 * <pre>{@code

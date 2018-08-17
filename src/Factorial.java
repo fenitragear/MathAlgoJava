@@ -20,13 +20,28 @@ public class Factorial {
 	 * 
 	 * @param n
 	 * 
-	 * @return the factorial number
+	 * @return the factorial number of n
 	 */
 	static long classic(int n) {
 		if(n == 0 || n == 1)
 			return 1;
 		
 		return n * classic(n - 1);
+	}
+	
+	/**
+	 * Sterling's Formula:<br />
+	 * {@code n! ≈ √2πn * (n/e^±n)}<br />
+	 * {@code √2πn * (n/e^±n) <= n! <= √2πn * (n/e^±n) * (e^1/12n)}<br /><br />
+	 * 
+	 * {@link https://en.wikipedia.org/wiki/Stirling%27s_approximation}
+	 * 
+	 * @param n
+	 * 
+	 * @return the factorial number of n
+	 */
+	static long sterlingFormula(int n) {
+		return (long) (Math.sqrt(2 * Math.PI * n) * Math.pow(n / Math.E, n) * Math.pow(Math.E, 1 / (12 * n)));
 	}
 
 	/**
@@ -59,7 +74,7 @@ public class Factorial {
 	 * 
 	 * @param n
 	 * 
-	 * @return the factorial number
+	 * @return the factorial number of n
 	 */
 	static BigInteger primeFactorization(int n) {
 		BigInteger factorial = BigInteger.valueOf(1);
@@ -100,6 +115,7 @@ public class Factorial {
 		long start = System.currentTimeMillis();
 		
 		System.out.println(classic(5));
+		System.out.println(sterlingFormula(5));
 		System.out.println(primeFactorization(1000));
 		System.out.println("Solution took " + (System.currentTimeMillis() - start) + "ms");
 	}
