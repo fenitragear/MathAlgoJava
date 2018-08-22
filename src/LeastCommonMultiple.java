@@ -9,24 +9,6 @@
 public final class LeastCommonMultiple {
 
 	/**
-	 * @param a
-	 * @param b
-	 * @return
-	 */
-	static long gcd(long a, long b) {
-		if (a < 0 || b < 0)
-			throw new IllegalArgumentException("Negative number");
-		
-		while (b != 0) {
-			long z = a % b;
-			a = b;
-			b = z;
-		}
-		
-		return a;
-	}
-	
-	/**
 	 * Least Common Multiple: {@code a.b/gcd(a, b)}
 	 * 
 	 * @param a
@@ -35,7 +17,7 @@ public final class LeastCommonMultiple {
 	 * @return
 	 */
 	static long lcm(long a, long b) {
-		return (a * b) / gcd(a, b);
+		return (a * b) / GreatestCommonDivisor.euclidean(a, b);
 	}
 
 	/**
