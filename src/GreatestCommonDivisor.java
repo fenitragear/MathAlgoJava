@@ -1,15 +1,32 @@
 
 /**
- * @see https://en.wikipedia.org/wiki/Binary_GCD_algorithm
- * @see https://en.wikipedia.org/wiki/Euclidean_algorithm
- * @see https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
- * @see https://en.wikipedia.org/wiki/Euler%27s_totient_function
+ * https://en.wikipedia.org/wiki/Binary_GCD_algorithm
+ * https://en.wikipedia.org/wiki/Euclidean_algorithm
+ * https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
+ * https://en.wikipedia.org/wiki/Euler%27s_totient_function
  *  
  * @author Stéphan R.
  *
  */
 public class GreatestCommonDivisor {
 
+	/**
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	static long gcd(long a, long b) {
+	    while (a * b != 0) {
+	        if (a >= b) {
+	        	a = a % b;
+	        } else {
+	        	b = b % a;
+	        }
+	    }
+	    
+	    return a + b;
+	}
+	
 	/**
 	 * Euclid Algorithm
 	 * 
@@ -66,7 +83,7 @@ public class GreatestCommonDivisor {
 	 * @return
 	 */
 	static long binary(long a, long b) {
-		int shift;
+		long shift;
 		
 		if(a == 0) {
 			return b;
@@ -91,9 +108,9 @@ public class GreatestCommonDivisor {
 			}
 			
 			if(a > b) {
-				a ^= b;
-				b ^= a;
-				a ^= b;
+				long temp = a;
+				a = b;
+				b = temp;
 			}
 			
 			b = b - a;
@@ -101,7 +118,7 @@ public class GreatestCommonDivisor {
 		
 		return a << shift;
 	}
-	
+		
 	/**
 	 *  
 	 * <pre>{@code
@@ -116,7 +133,7 @@ public class GreatestCommonDivisor {
 	 * 
 	 * @return
 	 */
-	static long eulerTotient(long a, long b) {
+	static int eulerTotient(int a, int b) {
 		return phi(a * b) / (phi(a) * phi(b));
 	}
 	
@@ -133,10 +150,10 @@ public class GreatestCommonDivisor {
 	 * @param n
 	 * @return
 	 */
-	private static long phi(long n) {
+	private static int phi(int n) {
         float result = n;
  
-        for (long p = 2; p * p <= n; ++p) {
+        for (int p = 2; p * p <= n; ++p) {
             if (n % p == 0) {
                 while (n % p == 0) {
                 	 n /= p;
@@ -146,25 +163,36 @@ public class GreatestCommonDivisor {
             }
         }
         
-        if (n > 1)
-            result *= (1.0 - (1.0 / (float) n));
+        if (n > 1) {
+        	 result *= (1.0 - (1.0 / (float) n));
+        }
  
         return (int) result;
 	}
 	
 	/**
-	 * Test cases
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		long start = System.currentTimeMillis();
+		long start = System.currentTimeMillis();		
+		System.out.println("GCD => " + gcd(991776, 999982));
+		System.out.println("Classical GCD took " + (System.currentTimeMillis() - start) + "ms\n");
 		
-		System.out.println(euclidean(1008, 3642));
-		System.out.println(eulerTotient(1008, 3642));
-		System.out.println(binary(1008, 3642));
-		System.out.println(extendedEuclidean(1008, 3642, 1, 1));
+		start = System.currentTimeMillis();
+		System.out.println("GCD => " + euclidean(991776, 999982));
+		System.out.println("Euclidean Algorithm took " + (System.currentTimeMillis() - start) + "ms\n");
 		
-		System.out.println("Solution took " + (System.currentTimeMillis() - start) + "ms");
+		start = System.currentTimeMillis();
+		System.out.println("GCD => " + extendedEuclidean(991776, 999982, 1, 1));		
+		System.out.println("Extended Euclidean Algorithm took " + (System.currentTimeMillis() - start) + "ms\n");
+		
+		//start = System.currentTimeMillis();
+		//System.out.println("GCD => " + eulerTotient(991776, 999982));
+		//System.out.println("EUler's Totient took " + (System.currentTimeMillis() - start) + "ms\n");
+		
+		start = System.currentTimeMillis();
+		System.out.println("GCD => " + binary(991776, 999982));
+		System.out.println("Binary GCD took " + (System.currentTimeMillis() - start) + "ms\n");
 	}
 }

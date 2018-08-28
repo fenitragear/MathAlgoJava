@@ -49,9 +49,12 @@ public class DigitSum {
 	}
 	
 	public static void main(String[] args) {
-		long start = System.currentTimeMillis();
+		long start = System.currentTimeMillis();		
+		System.out.println(classicDigitSum(123456789));
+		System.out.println("Solution took " + (System.currentTimeMillis() - start) + "ms");
 		
-		System.out.println(digitSum(154));
+		start = System.currentTimeMillis();		
+		System.out.println(digitSum(123456789));
 		System.out.println("Solution took " + (System.currentTimeMillis() - start) + "ms");
 	}
 }

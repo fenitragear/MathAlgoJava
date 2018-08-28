@@ -6,8 +6,7 @@ import java.math.BigInteger;
  *
  */
 public class Factorial {
-	
-	
+		
 	/**
 	 * Calculates factorial of an number<br /><br />
 	 * 
@@ -40,10 +39,10 @@ public class Factorial {
 	 * 
 	 * @return the factorial number of n
 	 */
-	static long sterlingFormula(int n) {
+	static long sterlingFormula(int n) {		
 		return (long) (Math.sqrt(2 * Math.PI * n) * Math.pow(n / Math.E, n) * Math.pow(Math.E, 1 / (12 * n)));
 	}
-
+	
 	/**
 	 * Calculates factorial of an number using the prime factorization technic
 	 * 
@@ -111,12 +110,20 @@ public class Factorial {
 		return factorial;
 	}
 	
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
+		System.out.println("Factorial => " + classic(10));
+		System.out.println("Classic Method took " + (System.currentTimeMillis() - start) + "ms");
 		
-		System.out.println(classic(5));
-		System.out.println(sterlingFormula(5));
-		System.out.println(primeFactorization(1000));
-		System.out.println("Solution took " + (System.currentTimeMillis() - start) + "ms");
+		start = System.currentTimeMillis();
+		System.out.println("Factorial => " + sterlingFormula(10));
+		System.out.println("Sterling Approximation took " + (System.currentTimeMillis() - start) + "ms");
+		
+		start = System.currentTimeMillis();
+		System.out.println("Factorial => " + primeFactorization(10));
+		System.out.println("Prime Factorization took " + (System.currentTimeMillis() - start) + "ms");
 	}
 }
