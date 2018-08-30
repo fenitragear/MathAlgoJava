@@ -96,6 +96,7 @@ public class PrimeGenerating {
         int limit = (int) (Math.floor(Math.sqrt(n)) + 1);
         int[] segmentedSieve = new int[n + 1 >> 1];
         int[] prime = sieveOfEratosthenes(limit);
+        int length = prime.length;
         int index = 0;
       
         // Divide the range [0..n-1] in different segments
@@ -125,13 +126,11 @@ public class PrimeGenerating {
             // else true.
             boolean mark[] = new boolean[limit + 1];
              
-            for (int i = 0; i < mark.length; i++) {
-            	mark[i] = true;
-            }
+            Arrays.fill(mark, Boolean.TRUE);
             
             // Use the found primes by simpleSieve() to find
             // primes in current range
-            for (int i = 0; i < prime.length; i++) {
+            for (int i = 0; i < length; i++) {
             	int currentPrime = prime[i];
             	
             	if(currentPrime == 0) {
@@ -162,14 +161,14 @@ public class PrimeGenerating {
       
             // Numbers which are not marked as false are prime
             for (int i = low; i < high; i++) {
-            	if (mark[i - low] == true) {
+            	if (mark[i - low]) {
             		segmentedSieve[index++] = i;
             	}
             }
             
             // Update low and high for next segment
-            low  = low + limit;
-            high = high + limit;
+            low  += limit;
+            high += limit;
         }
         
         return segmentedSieve;
@@ -372,7 +371,7 @@ public class PrimeGenerating {
 		
 		start = System.currentTimeMillis();
 		sieveOfAtkin(twoNPlus2);		
-		System.out.println("Sieve Of Atkin took " + (System.currentTimeMillis() - start) + "ms");
+		System.out.println("Sieve Of Atkin (optimized) took " + (System.currentTimeMillis() - start) + "ms");
 		
 		start = System.currentTimeMillis();		
 		segmentedSieve(twoNPlus2);

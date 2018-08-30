@@ -43,7 +43,7 @@ public class IntegerFactorization {
 	static int trialDivision2(int n) {
 		List<Integer> factors = new ArrayList<Integer>();
 		
-		while(n % 2 == 0) {
+		while((n & 1) == 0) {
 			factors.add(2);
 			n /= 2;
 		}
@@ -127,7 +127,7 @@ public class IntegerFactorization {
 	 * @return
 	 */
 	static long richardBrent(long n) {
-		if(n % 2 == 0) {
+		if((n & 1) == 0) {
 			return 2;
 		}
 		
@@ -189,7 +189,7 @@ public class IntegerFactorization {
 		int k = 7;
 		int i = 1;
 		
-		while(n % 2 == 0) {
+		while((n & 1) == 0) {
 			factors.add(2);
 			n /= 2;
 		}
